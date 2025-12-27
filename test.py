@@ -5,7 +5,7 @@ from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 
 # Load model & classes
-model = tf.keras.models.load_model("crop_identification_model.keras")
+model = tf.keras.models.load_model("new_model.keras")
 
 with open("crop_class_names.json") as f:
     class_names = json.load(f)
@@ -17,6 +17,7 @@ def predict_image(img_path):
     img_array = image.img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0)
     img_array = preprocess_input(img_array)
+    print(img_array)
 
     preds = model.predict(img_array)[0]
 
